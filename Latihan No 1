@@ -1,0 +1,26 @@
+import 'dart:io'; // Perlu import untuk menggunakan stdout
+
+// Fungsi utama untuk mencetak Segitiga Pascal
+void main() {
+  int baris = 6; // Jumlah baris yang diinginkan
+  for (int i = 0; i < baris; i++) {
+    // Cetak spasi awal untuk membuat bentuk segitiga sama sisi
+    stdout.write(" " * (baris - i - 1));
+
+    // Cetak setiap elemen dalam baris
+    for (int jarak = 0; jarak <= i; jarak++) {
+      stdout.write("${pascal(i, jarak)} "); // Beri jarak antar angka
+    }
+    stdout.writeln(""); // Pindah ke baris baru setelah mencetak baris
+  }
+}
+
+// Fungsi rekursif untuk menghitung nilai Segitiga Pascal
+int pascal(int row, int kolom) {
+  // Basis rekursi: jika berada di tepi Segitiga Pascal, nilai selalu 1
+  if (kolom == 0 || kolom == row) {
+    return 1;
+  }
+  // Kasus rekursif: nilai = jumlah dari dua elemen di atasnya
+  return pascal(row - 1, kolom - 1) + pascal(row - 1, kolom);
+}
