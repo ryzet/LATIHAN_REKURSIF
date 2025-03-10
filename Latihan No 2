@@ -1,0 +1,24 @@
+void kombinasiKarakter(
+    List<String> hasil, String kombinasiSaatIni, List<String> karakter, int n) {
+  if (kombinasiSaatIni.length == n) {
+    hasil.add(kombinasiSaatIni); 
+    return; // Hentikan rekursi
+  }
+
+  for (String c in karakter) {
+    kombinasiKarakter(hasil, kombinasiSaatIni + c, karakter, n);
+  }
+}
+
+void main() {
+  int n = 3;
+
+  List<String> karakter = ['a', 'b', 'c'];
+  List<String> hasil = [];
+
+  kombinasiKarakter(hasil, '', karakter, n);
+
+  for (String kombinasi in hasil) {
+    print(kombinasi);
+  }
+}
